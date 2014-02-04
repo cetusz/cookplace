@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myspace.mapper.GroupMapper">
+<resultMap type="Group" id="groupMap">
+    <id column="groupId" property="groupId"/>
+	<result column="groupName" property="groupName"/>
+</resultMap>
+
+<resultMap type="Group" id="groupAndUsersMap">
+ 	<id column="groupId" property="groupId"/>
+	<result column="groupName" property="groupName"/>
+	<collection property="users" column="groupId" ofType="User"> 
+	        <id column="userId" property="userId"/>  
+            <result column="userName" property="userName"/>  
+            <result column="pwd" property="pwd"/>  
+	</collection>
+</resultMap>
+
+<resultMap type="Group" id="groupUsersMap">
+ 	<id column="groupId" property="groupId"/>
+	<result column="groupName" property="groupName"/>
+	<collection property="users" column="groupId" ofType="User" select="selectUsersForGroup"/>
+</resultMap>
+
+<sql id="group_cloumn">
+ 	T.groupId,T.groupName
+</sql>
+
+
+<select id="getGroupById" resultMap="groupMap" parameterType="Long">
+  select <include refid="group_cloumn"/> from `group` T where groupId=#{groupId}
+</select>
+
+<select id="getGroupUsers" resultMap="groupUsersMap" parameterType="Long">
+  select <include refid="group_cloumn"/> from `group` T where groupId=#{groupId}
+</select>
+
+<select id="selectUsersForGroup" resultType="User" parameterType="Long">
+	select userId,userName,pwd from User where groupId=#{groupId}
+</select>
+
+<select id="selectGroupAndUsers" resultMap="groupAndUsersMap" parameterType="Long">
+  select u.userId,u.pwd,u.userName,g.groupId,g.groupName from User u left join `Group` g on u.groupId=g.groupId and g.groupId=#{groupId}
+</select>
+
+<insert id="addGroup" parameterType="Group">
+ insert into `Group`(groupName)value(#{groupName})
+</insert>
+
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myspace.mapper.UserMapper">
+
+	<cache eviction="LRU" flushInterval="600000" size="1024" readOnly="false" />
+	
+	<resultMap type="User" id="userMap">
+        <id column="userId" property="userId" />
+        <result column="userName" property="userName" />
+        <result column="pwd" property="pwd" />
+        <result column="groupId" property="groupId"/>
+	</resultMap>
+	
+	<resultMap type="User" id="userGroupMap">
+	 <id column="userId" property="userId" />
+        <result column="userName" property="userName" />
+        <result column="pwd" property="pwd" />
+        <result column="groupId" property="groupId"/>
+        <association property="group" javaType="Group" column="groupId" resultMap="groupResultMap"/>
+	</resultMap>
+	
+	<resultMap type="Group" id="groupResultMap">
+	 		<id column="groupId" property="groupId"/>  
+            <result column="groupName" property="groupName"/>  
+	</resultMap>
+	
+	 <select id="selectGroup" resultType="Group" parameterType="Long" flushCache="false" useCache="true"><!-- 此处实用缓存 -->  
+        select groupId,groupName  
+        from `group`   
+        where groupId = #{groupId}  
+     </select>  
+
+	
+    <select id="selectUserByID" parameterType="Long" resultMap="userGroupMap">
+        select * from User u left join `group` g on u.groupId=g.groupId where userId = #{userId}
+    </select>
+    
+    	
+    <select id="selectUserByGroupID" parameterType="Long" resultType="User">
+        select * from User where groupId = #{groupId}
+    </select>
+    
+    <insert id="addUser" parameterType="User" 
+        useGeneratedKeys="true" keyProperty="userId">
+     	insert into User(userName,pwd,groupId) values(#{userName},#{pwd},#{groupId})
+    </insert>
+    
+    <update id="updateUser" parameterType="User" >
+        update user set userName=#{userName},userAge=#{userAge},userAddress=#{userAddress} where userId=#{userId}
+    </update>
+     <select id="selectUserByUserNameAndPwd" parameterType="User" resultMap="userMap">
+        select * from User where userName=#{userName} and pwd = #{pwd}
+    </select>
+     
+</mapper>
