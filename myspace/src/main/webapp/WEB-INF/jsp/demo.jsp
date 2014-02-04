@@ -7,7 +7,7 @@
 <title>demo</title>
 </head>
 <body>
-	<form action="../demo/save" method="post">
+	<form action="../demo/login" method="post">
 	   <label for="userName">用户名:</label><input type="text" name="userName" id="userName"/>
 	   <label for="pwd">密码:</label><input type="text" name="pwd" id="pwd"/>
 	   <input type="submit" value="提交"/>
