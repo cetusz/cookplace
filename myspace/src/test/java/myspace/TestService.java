@@ -39,18 +39,6 @@ public class TestService {
 	}
 	
 	@Test
-	public void testAddUsers(){
-		Group group = groupService.getGroupById(1L);
-		Assert.notNull(group);
-		for(int i=0;i<100;i++){
-			User user = new User();
-			user.setGroupId(group.getGroupId());
-			user.setPwd("111111");
-			user.setUserName("user_"+i);
-			userService.addUser(user);
-		}
-	}
-	@Test
 	public void testLoadUser(){
 		User user = userService.selectUserByID(1L);
 		Assert.notNull(user.getGroup());

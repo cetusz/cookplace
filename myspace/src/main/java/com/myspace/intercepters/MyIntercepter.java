@@ -12,7 +12,7 @@ public class MyIntercepter implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		// TODO Auto-generated method stub
+
 		if(request.getSession().getAttribute("User")!=null)
 			return true;
 		return false;
@@ -22,7 +22,7 @@ public class MyIntercepter implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
+		response.sendRedirect("/demo/login");
 		
 	}
 
@@ -30,7 +30,6 @@ public class MyIntercepter implements HandlerInterceptor {
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
