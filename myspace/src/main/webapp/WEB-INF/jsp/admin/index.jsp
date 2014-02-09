@@ -9,7 +9,17 @@
     <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
   </head>
   <body>
-  	 管理页面
+        <div class="container-fluid">  
+      <div class="row-fluid">  
+         <div class="span2">span2</div>  
+         <div class="span10">span10</div>  
+      </div>  
+      <div class="row-fluid">  
+         <div class="span2">span2</div>  
+         <div class="span10">span10</div>  
+      </div>  
+  </div>   
+
     <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
    

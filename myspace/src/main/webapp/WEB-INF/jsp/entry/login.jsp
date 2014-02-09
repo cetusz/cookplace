@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<%=request.getContextPath()%>/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<style>
 	  body {
         padding-top: 40px;
@@ -42,7 +42,8 @@
     </style>
   </head>
   <body>
-   <form class="form-signin" action="../entry/login" method="post">
+   <form class="form-signin" action="<%=request.getContextPath()%>/entry/login" method="post">
+   
         <h2 class="form-signin-heading">登录页面</h2>
         <input type="text" name="userName" class="input-block-level" placeholder="用户名">
         <input type="password" name="pwd" class="input-block-level" placeholder="密码">
@@ -51,8 +52,8 @@
         </label>
         <button class="btn btn-large btn-primary" type="submit">登录</button>
       </form>
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/static/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/static/js/bootstrap.min.js"></script>
    
   </body>
 </html>

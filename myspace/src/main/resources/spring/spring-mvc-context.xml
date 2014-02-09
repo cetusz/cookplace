@@ -68,6 +68,8 @@
     		<bean class="com.myspace.intercepters.MyIntercepter" /> 
 	     </mvc:interceptor>
 	</mvc:interceptors>  
+	<!-- 解决默跳转到登录页问题 -->
+	<mvc:view-controller path="/" view-name="entry/login"/>
 	
 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
 	    <property name="defaultErrorView">    

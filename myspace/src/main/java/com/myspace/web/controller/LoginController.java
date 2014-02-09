@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.myspace.model.User;
 import com.myspace.service.UserService;
@@ -20,11 +21,12 @@ public class LoginController {
 	public String tologin(){
 		return "entry/login";
 	}
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/login")
 	public String login(@ModelAttribute User user,HttpServletRequest request){
 		User currentUser = userService.selectUserByUserNameAndPwd(user);
+		
 		if(currentUser!=null){
-			return "redirect:/admin/index";
+			return "admin/index";
 		}
 		return "entry/login";
 	}

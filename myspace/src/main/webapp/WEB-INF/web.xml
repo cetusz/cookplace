@@ -49,7 +49,7 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 	<welcome-file-list>
-		<welcome-file>/entry/tologin</welcome-file>
+		<welcome-file></welcome-file>
 	</welcome-file-list>
 	
 </web-app>
