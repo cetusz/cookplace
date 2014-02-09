@@ -62,9 +62,7 @@
 	</bean>  
 	<mvc:interceptors>  
 	     <mvc:interceptor>
-	        <mvc:mapping path="/demo/*"/>
-	      	<mvc:exclude-mapping path="/demo/demo"/>
-	      	<mvc:exclude-mapping path="/demo/login"/>
+	        <mvc:mapping path="/index/*"/>
     		<bean class="com.myspace.intercepters.MyIntercepter" /> 
 	     </mvc:interceptor>
 	</mvc:interceptors>  

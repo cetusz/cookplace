@@ -15,7 +15,6 @@ body{
 <body>
 <%
     Integer statCode = (Integer)request.getAttribute("javax.servlet.error.status_code");
-
 	Throwable exception = (Throwable) request.getAttribute("javax.servlet.error.exception");
 	request.setAttribute("exception", exception);
 %>
