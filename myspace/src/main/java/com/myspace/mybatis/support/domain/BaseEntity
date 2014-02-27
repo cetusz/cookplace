@@ -1,0 +1,10 @@
+package com.myspace.mybatis.support.domain;
+
+import java.io.Serializable;
+
+
+
+public interface BaseEntity<S extends Serializable> {
+	public  S getId() ;
+	public  void setId(S id) ;
+}
