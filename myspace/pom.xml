@@ -210,6 +210,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--图片剪裁-->
+        <dependency>
+		<groupId>net.coobird</groupId>
+		<artifactId>thumbnailator</artifactId>
+		<version>[0.4, 0.5)</version>
+	</dependency>
          -->
          <!-- apache shiro 相关jar包 -->
          <!-- 
